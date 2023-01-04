@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer playerRenderer;
     private BoxCollider2D playerCollider;
 
+    public AudioSource jumpSoundEffect;
+
     // factor for jump and run strength
     [SerializeField] private float jumpStrength = 13f;
     [SerializeField] private float runStrength = 10f;
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         playerRenderer = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<BoxCollider2D>();
 
+
     }
 
     // Update is called based on the computer frame rate
@@ -60,9 +63,11 @@ public class PlayerMovement : MonoBehaviour
         // Player jump check
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
+
             isJumping = true;
             jumpTimeCounter = jumpTime;
             playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, jumpStrength);
+            jumpSoundEffect.Play();
         }
         if (Input.GetKey(KeyCode.Space) && isJumping)
         { 
