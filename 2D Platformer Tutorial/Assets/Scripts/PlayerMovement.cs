@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D playerCollider;
 
     public AudioSource jumpSoundEffect;
+    public AudioSource landSoundEffect;
 
     // factor for jump and run strength
     [SerializeField] private float jumpStrength = 13f;
@@ -129,4 +130,14 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, 0.1f, whatIsGround);
     }
+
+    /*
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Terrain")
+        {
+            landSoundEffect.Play();
+        }
+    }
+    */
 }
