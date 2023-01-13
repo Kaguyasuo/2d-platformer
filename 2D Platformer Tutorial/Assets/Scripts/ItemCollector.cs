@@ -12,10 +12,21 @@ public class ItemCollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Apple"))
         {
             collectSoundEffect.Play();
-            Destroy(collision.gameObject);
+            Animator anim = collision.gameObject.GetComponent<Animator>();
+            anim.SetTrigger("collected");
+            StartCoroutine(Waiter((float) 0.25, collision));
             ApplesCollected++;
             AppleText.text = "Apples: " + ApplesCollected;
+ 
+
+            anim.SetTrigger("collected");
         }
+    }
+
+    private IEnumerator Waiter(float waitTime, Collider2D collision)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(collision.gameObject);
     }
 
 }
