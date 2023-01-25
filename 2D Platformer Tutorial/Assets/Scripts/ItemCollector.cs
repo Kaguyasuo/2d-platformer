@@ -16,7 +16,7 @@ public class ItemCollector : MonoBehaviour
             anim.SetTrigger("collected");
             StartCoroutine(Waiter((float) 0.25, collision));
             ApplesCollected++;
-            AppleText.text = "Apples: " + ApplesCollected;
+            AppleText.text = "Fruits: " + ApplesCollected;
  
 
             anim.SetTrigger("collected");
